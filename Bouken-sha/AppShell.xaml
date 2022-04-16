@@ -1,0 +1,129 @@
+﻿<Page
+    x:Class="Bouken_sha.AppShell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    TabNavigation="Cycle"
+    mc:Ignorable="d"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
+    <Page.Resources>
+        <!--This top margin is the height of the custom TitleBar-->
+        <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
+    </Page.Resources>
+
+    <Grid
+        x:Name="LayoutRoot">
+        <Border x:Name="AppTitleBar"
+                IsHitTestVisible="True"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Height="48"
+                Canvas.ZIndex="1" 
+                Margin="48,0,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Border Background="{ThemeResource SystemAccentColor}" 
+                        HorizontalAlignment="Left" 
+                        Width="20" Height="20" >
+                    <Image Source="Assets/Logo.png"/>
+                </Border>
+                <TextBlock x:Name="AppTitle"
+                    VerticalAlignment="Center"
+                    Margin="12,0,0,0"
+                    Style="{StaticResource CaptionTextBlockStyle}" />
+            </StackPanel>
+        </Border>
+        <muxc:NavigationView
+            x:Name="NavView"
+            AlwaysShowHeader="False"
+            IsSettingsVisible="True"
+            ItemInvoked="NavigationView_ItemInvoked"
+            BackRequested="NavigationView_BackRequested"
+            IsBackEnabled="{x:Bind AppFrame.CanGoBack, Mode=OneWay}"
+            PaneDisplayMode="LeftCompact"
+            IsTitleBarAutoPaddingEnabled="False">
+
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem
+                    x:Name="HomePage"
+                    Content="Home" 
+                    ToolTipService.ToolTip="Find your favorite anime"
+                    Icon="Home"/>
+                <muxc:NavigationViewItem
+                    x:Name="LibraryPage"
+                    Content="Library" 
+                    ToolTipService.ToolTip="Library"
+                    Icon="Library"/>
+                <muxc:NavigationViewItem
+                    x:Name="NewsUpdatePage"
+                    Content="News and update" 
+                    ToolTipService.ToolTip="News and update"
+                    Icon="PostUpdate"/>
+                <muxc:NavigationViewItem
+                    x:Name="HistoryPage"
+                    Content="History" 
+                    ToolTipService.ToolTip="History"
+                    Icon="Clock"/>
+                <muxc:NavigationViewItem
+                    x:Name="ExtensionPage"
+                    Content="Extension" 
+                    ToolTipService.ToolTip="Extension"
+                    Icon="ViewAll"/>
+            </muxc:NavigationView.MenuItems>
+
+            <muxc:NavigationView.FooterMenuItems>
+                <muxc:NavigationViewItem
+                    x:Name="DownloadPage"
+                    Content="Download" 
+                    ToolTipService.ToolTip="Download"
+                    Icon="Download"/>
+                <muxc:NavigationViewItem
+                    x:Name="BackupRestorePage"
+                    Content="Backup and restore" 
+                    ToolTipService.ToolTip="Backup and restore"
+                    Icon="Rotate"/>
+            </muxc:NavigationView.FooterMenuItems>
+
+
+            <!-- In OnNavigatingToPage, we synchronize the selected item in the NavigationView with the current page. -->
+            <Frame
+                x:Name="frame"
+                Margin="20,0,0,0"
+                Navigating="OnNavigatingToPage">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </muxc:NavigationView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource LargeWindowSnapPoint}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowSnapPoint}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource MinWindowSnapPoint}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AppTitleBar.Margin" Value="88,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
