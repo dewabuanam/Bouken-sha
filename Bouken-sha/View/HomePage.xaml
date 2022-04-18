@@ -25,12 +25,7 @@
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <CheckBox IsChecked="True" Padding="5" MinWidth="0" VerticalAlignment="Center"/>
                                 <BitmapIcon VerticalAlignment="Center" ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Logo.png" Width="20" Height="20"/>
-                                <TextBlock Text="9Anime" VerticalAlignment="Center" Padding="5" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <CheckBox IsChecked="True" Padding="5" MinWidth="0" VerticalAlignment="Center"/>
-                                <BitmapIcon VerticalAlignment="Center" ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Logo.png" Width="20" Height="20"/>
-                                <TextBlock Text="Crunchyroll" VerticalAlignment="Center" Padding="5" />
+                                <TextBlock Text="KissAnime" VerticalAlignment="Center" Padding="5" />
                             </StackPanel>
                         </StackPanel>
                     </Flyout>
@@ -39,17 +34,15 @@
             <AppBarButton
                     Icon="World"
                     ToolTipService.ToolTip="Notification" />
-            <AppBarButton Icon="Contact2" ToolTipService.ToolTip="Guest" Label="Guest">
+            <AppBarButton ToolTipService.ToolTip="Guest" Label="Guest">
+                <AppBarButton.Icon>
+                    <BitmapIcon VerticalAlignment="Center" HorizontalAlignment="Center" ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Logo.png" Width="20" Height="20"/>
+                </AppBarButton.Icon>
                 <AppBarButton.Flyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Text="Guest 2">
                             <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xE187;"/>
-                            </MenuFlyoutItem.Icon>
-                        </MenuFlyoutItem>
-                        <MenuFlyoutItem Text="Guest 3">
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xE187;"/>
+                                <BitmapIcon VerticalAlignment="Center" HorizontalAlignment="Center" ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Logo.png" Width="20" Height="20"/>
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
                         <MenuFlyoutSeparator/>
@@ -68,5 +61,8 @@
                 Margin="12,8,12,0"
                 CollapseWidth="{StaticResource LargeWindowSnapPoint}"
                 RelativePanel.LeftOf="MainCommandBar"/>
+        <StackPanel>
+            <Image Source="/Assets/Logo.png" Height="300" />
+        </StackPanel>
     </RelativePanel>
 </Page>
