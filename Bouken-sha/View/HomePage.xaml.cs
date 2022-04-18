@@ -14,5 +14,10 @@ namespace Bouken_sha.View
         {
             this.InitializeComponent();
         }
+
+        private void rc_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
+        {
+
+        }
     }
 }

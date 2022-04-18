@@ -12,7 +12,6 @@ namespace Bouken_sha.Repository.Sqlite
         { }
         public DbSet<Extensions> Extensions { get; set; }
         public DbSet<AnimeLibrary> AnimeLibraries { get; set; }
-        public DbSet<SeasonLibrary> SeasonLibraries { get; set; }
         public DbSet<EpisodeLibrary> EpisodeLibraries { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<News> News { get; set; }

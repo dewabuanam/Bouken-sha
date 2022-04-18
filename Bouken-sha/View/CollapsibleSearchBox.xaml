@@ -10,7 +10,10 @@
     d:DesignHeight="32"
     d:DesignWidth="240"
     mc:Ignorable="d">
-
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="ToggleButtonForeground" Color="White"/>
+        <SolidColorBrush x:Key="ToggleButtonBackgroundPointerOver" Color="Gray"/>
+    </UserControl.Resources>
     <Grid>
         <ToggleButton
             x:Name="SearchButton"
@@ -18,6 +21,7 @@
             Height="32"
             Padding="6"
             HorizontalAlignment="Right"
+            Background="Transparent"
             VerticalAlignment="Top"
             Checked="SearchButton_Checked"
             Visibility="Collapsed"

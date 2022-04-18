@@ -4,13 +4,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:media="using:Windows.UI.Xaml.Media"
     TabNavigation="Cycle"
     mc:Ignorable="d"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
     <Page.Resources>
         <!--This top margin is the height of the custom TitleBar-->
         <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
+        <media:AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="Black"
+                  TintOpacity="0.9"
+                  TintLuminosityOpacity="0.9"
+                  FallbackColor="Black"/>
+        <SolidColorBrush x:Key="NavigationViewItemForeground" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewItemForegroundPointerOver" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewItemForegroundSelected" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPointerOver" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewItemForegroundPressed" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPressed" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewButtonForeground" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewButtonForegroundPointerOver" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewButtonForegroundSelected" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewButtonForegroundSelectedPointerOver" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewButtonForegroundPressed" Color="White"/>
+        <SolidColorBrush x:Key="NavigationViewButtonForegroundSelectedPressed" Color="White"/>
     </Page.Resources>
 
     <Grid
@@ -38,16 +56,16 @@
             x:Name="NavView"
             AlwaysShowHeader="False"
             IsSettingsVisible="True"
+            Background="{StaticResource NavigationViewDefaultPaneBackground}"
             ItemInvoked="NavigationView_ItemInvoked"
             BackRequested="NavigationView_BackRequested"
             IsBackEnabled="{x:Bind AppFrame.CanGoBack, Mode=OneWay}"
             PaneDisplayMode="LeftCompact"
             IsTitleBarAutoPaddingEnabled="False">
-
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem
                     x:Name="HomePage"
-                    Content="Home" 
+                    Content="Home"
                     ToolTipService.ToolTip="Find your favorite anime"
                     Icon="Home"/>
                 <muxc:NavigationViewItem
@@ -87,10 +105,11 @@
 
 
             <!-- In OnNavigatingToPage, we synchronize the selected item in the NavigationView with the current page. -->
+           
             <Frame
                 x:Name="frame"
-                Margin="20,0,0,0"
-                Navigating="OnNavigatingToPage">
+                Navigating="OnNavigatingToPage"
+                Background="{ThemeResource HostCustomAcrylicInAppLuminosity}">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>

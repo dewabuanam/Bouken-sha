@@ -6,6 +6,7 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -36,8 +37,14 @@ namespace Bouken_sha
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            titleBar.ButtonForegroundColor = Colors.Black;
+            titleBar.ButtonForegroundColor = Colors.White;
+            titleBar.ButtonHoverForegroundColor = Colors.Gray;
+            titleBar.ButtonHoverBackgroundColor = Colors.White;
+            titleBar.ButtonPressedForegroundColor = Colors.Gray;
+            titleBar.ButtonPressedBackgroundColor = Colors.White;
+
             AppTitle.Text = Windows.ApplicationModel.Package.Current.DisplayName;
+            AppTitle.Foreground = new SolidColorBrush(Colors.White);
         }
         public Frame AppFrame => frame;
 
