@@ -1,8 +1,12 @@
-﻿using Windows.ApplicationModel.Core;
+﻿using Bouken_sha.Utils;
+using Bouken_sha.View;
+using System;
+using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -20,7 +24,7 @@ namespace Bouken_sha
 
             Loaded += (sender, args) =>
             {
-                NavView.SelectedItem = CustomerListMenuItem;
+                NavView.SelectedItem = HomePage;
             };
 
             // Set up custom title bar.
@@ -39,17 +43,38 @@ namespace Bouken_sha
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
-
+            string id = args.InvokedItemContainer.Name;
+            Type pageType;
+            if (args.IsSettingsInvoked)
+                pageType = PageRepository.Instance.GetPage("SettingPage");
+            else
+                pageType = PageRepository.Instance.GetPage(id);
+            if (pageType == null || pageType == AppFrame.CurrentSourcePageType)
+                return;
+            AppFrame.Navigate(pageType);
         }
 
         private void NavigationView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
         {
-
+            if (AppFrame.CanGoBack)
+            {
+                AppFrame.GoBack();
+            }
         }
 
         private void OnNavigatingToPage(object sender, Windows.UI.Xaml.Navigation.NavigatingCancelEventArgs e)
         {
-
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                if (e.SourcePageType == typeof(HomePage))
+                {
+                    NavView.SelectedItem = HomePage;
+                }
+                else if (e.SourcePageType == typeof(LibraryPage))
+                {
+                    NavView.SelectedItem = LibraryPage;
+                }
+            }
         }
     }
 }

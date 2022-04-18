@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Bouken_sha.Extension._9Anime</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bouken-sha.Extension.Models\Bouken-sha.Extension.Models.csproj" />
+    <ProjectReference Include="..\Bouken-sha.Extension\Bouken-sha.Extension.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,72 @@
+﻿<Page
+    x:Class="Bouken_sha.View.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:uc="using:Bouken_sha.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+        <CommandBar
+                x:Name="MainCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                DefaultLabelPosition="Right"
+                RelativePanel.AlignRightWithPanel="True">
+
+            <AppBarButton
+                x:Name="SearchFilter"
+                Icon="ViewAll"
+                ToolTipService.ToolTip="Search on extension">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <CheckBox IsChecked="True" Padding="5" MinWidth="0" VerticalAlignment="Center"/>
+                                <BitmapIcon VerticalAlignment="Center" ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Logo.png" Width="20" Height="20"/>
+                                <TextBlock Text="9Anime" VerticalAlignment="Center" Padding="5" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <CheckBox IsChecked="True" Padding="5" MinWidth="0" VerticalAlignment="Center"/>
+                                <BitmapIcon VerticalAlignment="Center" ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Logo.png" Width="20" Height="20"/>
+                                <TextBlock Text="Crunchyroll" VerticalAlignment="Center" Padding="5" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton
+                    Icon="World"
+                    ToolTipService.ToolTip="Notification" />
+            <AppBarButton Icon="Contact2" ToolTipService.ToolTip="Guest" Label="Guest">
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Guest 2">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE187;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="Guest 3">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE187;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="Add Account">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE109;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+        <uc:CollapsibleSearchBox
+                x:Name="CustomerSearchBox"
+                Width="240"
+                Margin="12,8,12,0"
+                CollapseWidth="{StaticResource LargeWindowSnapPoint}"
+                RelativePanel.LeftOf="MainCommandBar"/>
+    </RelativePanel>
+</Page>
