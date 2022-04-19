@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Bouken_sha.Extension.Models
 {
-    public class EpisodeOrder
+    public enum EpisodeOrder
     {
+        Latest,
+        Oldest
     }
 }

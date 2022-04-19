@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Bouken_sha.Extension.Models
 {
-    public   class AnimeOrder
+    public enum AnimeOrder
     {
+        AtoZ,
+        ZtoA,
+        Latest,
+        Oldest,
+        Trending,
+        Popularity
     }
 }

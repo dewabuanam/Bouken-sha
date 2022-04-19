@@ -6,5 +6,6 @@ namespace Bouken_sha.Extension.Models
 {
     public class EpisodeFilter
     {
+
     }
 }
